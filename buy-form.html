@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy Herb</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="buy-form.css"> -->
+</head>
+<body>
+  <header>
+  <div class="header-container">
+    <div class="logo">
+      <img src="logo.png" alt="Herbal Garden Logo">
+      <h1>Interactive Herbal Garden</h1>
+    </div>
+    <nav class="topbar">
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="organ.html">Organ Healing</a></li>
+        <li><a href="contact.html">Support</a></li>
+        <li><a href="buy-now.html" class="buy-btn">Buy Now</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  <main style="max-width:600px; margin:2rem auto; padding:2rem; background:white; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+    <h2 id="herb-name" style="text-align:center; color:#228B22;"></h2>
+    <img id="herb-img" src="" alt="" style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:1rem;">
+
+    <form id="buy-form">
+      <label>Name:</label>
+      <input type="text" name="name" required>
+
+      <label>Address:</label>
+      <textarea name="address" required></textarea>
+
+      <label>Quantity:</label>
+      <input type="number" name="quantity" min="1" required>
+
+      <label>Payment Mode:</label>
+      <select name="payment" required>
+        <option value="Cash on Delivery">Cash on Delivery</option>
+      </select>
+
+      <button type="submit" style="background:#228B22; color:white; padding:0.8rem 1.5rem; border:none; border-radius:8px; cursor:pointer; margin-top:1rem; width:100%;">Submit</button>
+    </form>
+  </main>
+
+  <script>
+    const herb = JSON.parse(localStorage.getItem('selectedHerb'));
+    if (herb) {
+      document.getElementById('herb-name').textContent = herb.name;
+      document.getElementById('herb-img').src = `${herb.image}`;
+      document.getElementById('herb-img').alt = herb.name;
+    }
+
+    document.getElementById('buy-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      // You can save order details to server or localStorage if needed
+      alert('Your order is placed successfully!');
+      window.location.href = 'thankyou.html';
+    });
+  </script>
+</body>
+</html>

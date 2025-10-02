@@ -1,0 +1,185 @@
+/* ---------------- General ---------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f0fff4;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ---------------- Header ---------------- */
+header {
+  background: linear-gradient(to right, #228B22, #2e7d32);
+  color: white;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.logo h1 {
+  font-size: 1.6rem;
+}
+
+.topbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.topbar ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.topbar ul li a:hover,
+.topbar ul li a.active {
+  background: #1b5e20;
+}
+
+/* ---------------- Organ Detail ---------------- */
+.organ-detail-page {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.organ-overview {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.organ-overview h2 {
+  color: #228B22;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.organ-overview img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid #228B22;
+  margin-bottom: 1rem;
+}
+
+.organ-overview p {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ---------------- Herbs & Fruits ---------------- */
+.herbs-fruits-section h3 {
+  color: #1b5e20;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#herbs-fruits-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+#herbs-fruits-list li {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#herbs-fruits-list li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+#herbs-fruits-list li strong {
+  font-size: 1.1rem;
+  color: #228B22;
+}
+
+#herbs-fruits-list li p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+/* ---------------- Footer ---------------- */
+footer {
+  background: #1b5e20;
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* ---------------- Responsive ---------------- */
+@media screen and (max-width: 768px) {
+  .organ-overview img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+
+/* Floating AI Toy */
+#ai-toy {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #4c975e, #2ecd39);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  z-index: 999;
+}
+
+#ai-toy:hover {
+  transform: scale(1.2);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}

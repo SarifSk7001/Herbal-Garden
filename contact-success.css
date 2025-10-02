@@ -1,0 +1,206 @@
+/* ---------------- Body & General ---------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f0fff4;
+  color: #333;
+  line-height: 1.6;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ---------------- Header ---------------- */
+header {
+  width: 100%;
+  background: linear-gradient(to right, #228B22, #2e7d32);
+  padding: 1rem;
+  color: white;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.logo h1 {
+  font-size: 1.8rem;
+}
+
+/* ---------------- Topbar ---------------- */
+.topbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.topbar ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+}
+
+.topbar ul li a:hover,
+.topbar ul li a.active {
+  background: #1b5e20;
+}
+
+/* ---------------- Main Success Page ---------------- */
+.success-page {
+  flex: 1; /* ensures footer stays at bottom */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.success-page h2 {
+  color: #228B22;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.success-page p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* ---------------- Button ---------------- */
+.btn {
+  padding: 0.8rem 2rem;
+  background: linear-gradient(135deg, #28a745, #6fcf97, #2e7d32);
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ---------------- Footer ---------------- */
+footer {
+  background: #1b5e20;
+  color: white;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  margin-top: auto; /* push footer to bottom */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer-about h3,
+.footer-social h3 {
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+  color: #a5d6a7;
+}
+
+.footer-about p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+.footer-social .social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.footer-social .social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: #2e7d32;
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.footer-social .social-icons a:hover {
+  background: #a5d6a7;
+  color: #1b5e20;
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #c8f0c8;
+}
+
+/* ---------------- Animations ---------------- */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+/* ---------------- Responsive ---------------- */
+@media screen and (max-width: 900px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .topbar ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .topbar ul li a {
+    width: 100%;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -1,0 +1,408 @@
+/* ---------------- General Reset ---------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  background: #f0fff4;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  margin: 0.5rem 0;
+}
+
+/* ---------------- Header + Top Navigation ---------------- */
+header {
+  width: 100%;
+  background: linear-gradient(to right, #228B22, #2e7d32);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;        /* full width */
+  margin: 0;
+  padding: 0.7rem 1.5rem; /* add breathing space */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo img {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.logo h1 {
+  color: white;
+  font-size: 1.9rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Top Navigation (inline with logo) */
+.topbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.topbar ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.6rem 1.3rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.topbar ul li a:hover,
+.topbar ul li a.active {
+  background: #1b5e20;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.topbar ul li .buy-btn {
+  background: linear-gradient(135deg, #d62b2b, #cd4e2e);
+  color: white !important;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.topbar ul li .buy-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* ---------------- Sidebar ---------------- */
+.sidebar {
+  width: 200px;
+  background: #f9f9f9;
+  height: 100%;
+  padding: 1rem;
+  position: fixed;
+  top: 90px; /* header height */
+  left: 0;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 1rem;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #2e7d32;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.sidebar ul li a:hover {
+  color: #228B22;
+}
+
+/* ---------------- Dashboard Description ---------------- */
+.dashboard-description {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #e6f2e6, #c8f0c8);
+  border-left: 6px solid #228B22;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.dashboard-description h2 {
+  color: #228B22;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard-description p {
+  line-height: 1.7;
+  color: #2e7d32;
+  font-size: 1.05rem;
+}
+
+.herbal-benefits {
+  list-style: disc inside;
+  margin: 1rem 0;
+  padding-left: 1rem;
+  color: #2e7d32;
+}
+
+/* ---------------- Herb / Organ Grid ---------------- */
+.herb-grid, .organ-grid, .herbal-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.herb, .organ, .herbal-item {
+  width: 250px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.herb img, .organ img, .herbal-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.herb:hover, .organ:hover, .herbal-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+.herbal-item span {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+.herbal-item button {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: linear-gradient(135deg, #4c975e, #2ecd39);
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.herbal-item button:hover {
+  transform: scale(1.05);
+}
+
+/* ---------------- Detail Container ---------------- */
+.detail-container, .organ-detail-container {
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.detail-container img {
+  width: 350px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.plant-info {
+  max-width: 600px;
+}
+
+.plant-info h3 {
+  margin: 1rem 0 0.3rem;
+  color: #228B22;
+}
+
+.plant-info p {
+  margin: 0.2rem 0 0.8rem;
+  line-height: 1.5;
+}
+
+/* ---------------- Quiz ---------------- */
+.quiz-container {
+  max-width: 700px;
+  margin: auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.quiz-container h2 {
+  margin-bottom: 1rem;
+  color: #228B22;
+}
+
+.quiz-container button {
+  margin-top: 1rem;
+}
+
+/* ---------------- Forms (Contact / Buy) ---------------- */
+form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+form input, form textarea, form select {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+form button {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+/* ---------------- Footer ---------------- */
+footer {
+  background: #1b5e20;
+  color: white;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #c8f0c8;
+}
+
+/* ---------------- Floating AI Toy ---------------- */
+#ai-toy {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #4c975e, #2ecd39);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  z-index: 999;
+}
+
+#ai-toy:hover {
+  transform: scale(1.2);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+/* ---------------- Buttons ---------------- */
+button {
+  background-color: #228B22;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #1b5e20;
+}
+
+/* ---------------- Animations ---------------- */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+/* ---------------- Responsive ---------------- */
+@media screen and (max-width: 900px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .topbar ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .topbar ul li a {
+    width: 100%;
+  }
+
+  .herb-grid, .organ-grid, .detail-container {
+    padding: 1rem;
+    justify-content: center;
+  }
+
+  .detail-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .detail-container img {
+    width: 90%;
+  }
+
+  .plant-info {
+    max-width: 90%;
+  }
+
+  .dashboard-description {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}

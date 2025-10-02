@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Include Header -->
+  <header> ... </header>
+
+  <main class="thankyou-section">
+    <h2>Thank You for Buying!</h2>
+    <p id="herb-name"></p>
+    <a href="buy.html" class="btn">Buy More</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Interactive Herbal Garden</p>
+  </footer>
+
+  <script>
+    const herb = localStorage.getItem('selectedHerb');
+    document.getElementById('herb-name').textContent = 
+      herb ? `You have successfully bought: ${herb}` : "Thank you for your purchase!";
+  </script>
+</body>
+</html>

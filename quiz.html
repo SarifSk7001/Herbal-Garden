@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Herbal Quiz</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---------------- Body & General ---------------- */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0fff4;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ---------------- Main & Quiz ---------------- */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .quiz-container {
+      background: #fff;
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .quiz-container h2 {
+      color: #228B22;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .options button {
+      background: #e8f5e9;
+      color: #2e7d32;
+      border: none;
+      padding: 0.8rem 1.2rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .options button:hover {
+      background: #c8e6c9;
+    }
+
+    #next-btn {
+      margin-top: 1.5rem;
+      background: linear-gradient(135deg, #4c975e, #2ecd39);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: none;
+    }
+
+    #next-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .result {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #228B22;
+      margin-top: 1rem;
+    }
+
+    /* ---------------- Footer ---------------- */
+    footer {
+      background: #1b5e20;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    @media screen and (max-width: 600px){
+      .quiz-container {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+  <div class="header-container">
+    <div class="logo">
+      <img src="logo.png" alt="Herbal Garden Logo">
+      <h1>Interactive Herbal Garden</h1>
+    </div>
+    <nav class="topbar">
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="organ.html">Organ Healing</a></li>
+        <li><a href="contact.html">Support</a></li>
+        <li><a href="buy-now.html" class="buy-btn">Buy Now</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  <!-- Main Quiz Content -->
+  <main>
+    <div class="quiz-container" id="quiz-container">
+      <h2 id="question">Loading Question...</h2>
+      <div class="options" id="options"></div>
+      <button id="next-btn">Next</button>
+      <div id="score" class="result"></div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Interactive Herbal Garden. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const questions = [
+      {q:"Which plant is best for boosting immunity?", options:["Tulsi","Aloe Vera","Neem","Mint"], answer:"Tulsi"},
+      {q:"Which fruit is rich in Vitamin C?", options:["Apple","Orange","Banana","Papaya"], answer:"Orange"},
+      {q:"Which herb is used for digestion?", options:["Ginger","Basil","Rosemary","Saffron"], answer:"Ginger"},
+      {q:"Which fruit is good for skin health?", options:["Strawberry","Mango","Guava","Lemon"], answer:"Guava"},
+      {q:"Which herb helps with stress relief?", options:["Chamomile","Turmeric","Coriander","Mint"], answer:"Chamomile"},
+      {q:"Which plant is known for anti-inflammatory properties?", options:["Aloe Vera","Tulsi","Neem","Basil"], answer:"Aloe Vera"},
+      {q:"Which fruit helps control blood sugar?", options:["Apple","Banana","Pomegranate","Orange"], answer:"Pomegranate"},
+      {q:"Which herb improves memory?", options:["Ginkgo","Basil","Mint","Rosemary"], answer:"Ginkgo"},
+      {q:"Which plant is used for wound healing?", options:["Aloe Vera","Tulsi","Neem","Mint"], answer:"Aloe Vera"},
+      {q:"Which fruit is high in antioxidants?", options:["Blueberry","Banana","Apple","Mango"], answer:"Blueberry"}
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    const totalQuestions = 10;
+
+    const selectedQuestions = [];
+    while(selectedQuestions.length < totalQuestions){
+      const rand = Math.floor(Math.random() * questions.length);
+      if(!selectedQuestions.includes(questions[rand])){
+        selectedQuestions.push(questions[rand]);
+      }
+    }
+
+    const questionEl = document.getElementById('question');
+    const optionsEl = document.getElementById('options');
+    const nextBtn = document.getElementById('next-btn');
+    const scoreEl = document.getElementById('score');
+
+    function loadQuestion(){
+      optionsEl.innerHTML = "";
+      scoreEl.textContent = "";
+      nextBtn.style.display = "none";
+      const q = selectedQuestions[currentQuestion];
+      questionEl.textContent = `Q${currentQuestion+1}. ${q.q}`;
+      q.options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.textContent = option;
+        btn.addEventListener('click', () => selectAnswer(option));
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(option){
+      const correct = selectedQuestions[currentQuestion].answer;
+      if(option === correct) score++;
+      Array.from(optionsEl.children).forEach(btn => btn.disabled = true);
+      nextBtn.style.display = "block";
+    }
+
+    nextBtn.addEventListener('click', () => {
+      currentQuestion++;
+      if(currentQuestion < totalQuestions){
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    });
+
+    function showResult(){
+      questionEl.textContent = "Quiz Completed!";
+      optionsEl.innerHTML = "";
+      nextBtn.style.display = "none";
+      scoreEl.textContent = `Your Score: ${score} / ${totalQuestions}`;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
